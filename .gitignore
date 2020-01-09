@@ -15,7 +15,7 @@ target/
 
 ### IntelliJ IDEA ###
 .idea
-!.idea/inspectionProfiles/profiles_settings.xml
+!.idea/inspectionProfiles/Project_Default.xml
 *.iws
 *.iml
 *.ipr
