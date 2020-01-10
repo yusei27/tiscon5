@@ -49,7 +49,7 @@
 - [tiscon5-startup-guide](https://github.com/tiscon/tiscon5-startup-guide)
 
 ## アプリケーションを起動する
-- [自分のPCでアプリを動かす(Windows)](https://github.com/tiscon/tiscon5-startup-guide)
+- [自分のPCでアプリを動かす](https://github.com/tiscon/tiscon5-startup-guide)
 
 # 参考
 
