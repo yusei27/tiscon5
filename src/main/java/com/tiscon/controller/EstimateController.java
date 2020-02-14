@@ -1,5 +1,6 @@
 package com.tiscon.controller;
 
+import com.tiscon.code.PackageType;
 import com.tiscon.dao.EstimateDao;
 import com.tiscon.dto.UserOrderDto;
 import com.tiscon.form.UserOrderForm;
@@ -139,6 +140,7 @@ public class EstimateController {
         model.addAttribute("prefectures", estimateDAO.getAllPrefectures());
         model.addAttribute("userOrderForm", userOrderForm);
         model.addAttribute("price", price);
+
         return "result";
     }
 
