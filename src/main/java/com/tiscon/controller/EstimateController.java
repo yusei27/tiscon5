@@ -131,10 +131,20 @@ public class EstimateController {
         UserOrderDto dto = new UserOrderDto();
         BeanUtils.copyProperties(userOrderForm, dto);
         Integer price = estimateService.getPrice(dto);
+        Integer priceForDistance = estimateService.getPriceForDistance(dto);
+        Integer pricePerTruck = estimateService.getpricePerTruck(dto);
+        Integer priceForOptionalService = estimateService.getForOptionalService(dto);
+
+
 
         model.addAttribute("prefectures", estimateDAO.getAllPrefectures());
         model.addAttribute("userOrderForm", userOrderForm);
         model.addAttribute("price", price);
+        model.addAttribute("pricePerTruck",pricePerTruck);
+        model.addAttribute("priceForDistance",priceForDistance);
+        model.addAttribute("priceForOptionalService",priceForOptionalService);
+
+
         return "result";
     }
 
