@@ -17,7 +17,7 @@
     <h1>概算お見積り結果</h1>
     <div class="col-sm-12">
       <h2><p>概算お見積り結果は<span th:text="${price}"></span>円です。</p></h2>
-
+      <span th:text="${pricePerTruck}"></span>
 
       <h4>荷物情報</h4>
       <table class="table table-bordered">
@@ -25,7 +25,7 @@
         <col span="2" style="background-color: #FFFFFF;">
         <tbody>
         <tr>
-          <th style="width: 40%">段ボールの個数 </th>
+          <th style="width: 40%">段ボールの個数</th>
           <td><span th:text="*{box}"></span></td>
           <input type="hidden" name="box" id="box" th:value="*{box}"/>
         </tr>
