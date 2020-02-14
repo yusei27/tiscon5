@@ -137,6 +137,10 @@ public class EstimateController {
 
 
 
+        if(price == 0){
+            return "confirm";
+        }
+
         model.addAttribute("prefectures", estimateDAO.getAllPrefectures());
         model.addAttribute("userOrderForm", userOrderForm);
         model.addAttribute("price", price);
@@ -150,6 +154,7 @@ public class EstimateController {
 
     /**
      * 申し込み完了画面に遷移する。
+     *
      *
      * @param userOrderForm 顧客が入力した見積もり依頼情報
      * @param result        精査結果
