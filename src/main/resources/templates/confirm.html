@@ -37,10 +37,11 @@
         </tr>
         <tr>
           <th>連絡先TEL</th>
-          <td><span th:text="*{tel}"></span>
-            <div th:if="${#fields.hasErrors('tel')}">
-              <div class="error-message" th:each="err : ${#fields.errors('tel')}" th:text="${err}"></div>
-            </div>
+          <td>
+            <span th:text="*{tel}"></span>
+            <span th:if="${#fields.hasErrors('tel')}">
+              <span class="error-message" th:each="err : ${#fields.errors('tel')}" th:text="${err}"></span>
+            </span>
           </td>
           <input type="hidden" name="tel" id="tel" th:value="*{tel}"/>
         </tr>
