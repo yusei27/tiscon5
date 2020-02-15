@@ -111,7 +111,7 @@ public class EstimateService {
         int distanceInt = (int) Math.floor(distance);
 
         // 距離当たりの料金を算出する
-        int priceForDistance = distanceInt*PRICE_PER_DISTANCE;
+        int priceForDistance = distanceInt * PRICE_PER_DISTANCE;
 
         return priceForDistance;
     }
@@ -119,28 +119,32 @@ public class EstimateService {
 
 
     public Integer getpricePerTruck(UserOrderDto dto) {
-        double distance = estimateDAO.getDistance(dto.getOldPrefectureId(), dto.getNewPrefectureId());
-        // 小数点以下を切り捨てる
-        int distanceInt = (int) Math.floor(distance);
-        int serviceId=1;
-        int boxNum=1;
-        int pricePerTruck = estimateDAO.getPricePerTruck(boxNum);
-        int priceForOptionalService =estimateDAO.getPricePerOptionalService(serviceId);
+        int boxes = getBoxForPackage(dto.getBox(), PackageType.BOX)
+                + getBoxForPackage(dto.getBed(), PackageType.BED)
+                + getBoxForPackage(dto.getBicycle(), PackageType.BICYCLE)
+                + getBoxForPackage(dto.getWashingMachine(), PackageType.WASHING_MACHINE);
+
+        int pricePerTruck = estimateDAO.getPricePerTruck(boxes);
 
         // 距離当たりの料金を算出する
-
 
         return pricePerTruck;
     }
 
     public Integer getForOptionalService(UserOrderDto dto) {
-        double distance = estimateDAO.getDistance(dto.getOldPrefectureId(), dto.getNewPrefectureId());
-         //小数点以下を切り捨てる
-        int distanceInt = (int) Math.floor(distance);
-        int serviceId=1;
-        int priceForOptionalService =estimateDAO.getPricePerOptionalService(serviceId);
+//        double distance = estimateDAO.getDistance(dto.getOldPrefectureId(), dto.getNewPrefectureId());
+//         //小数点以下を切り捨てる
+//        int distanceInt = (int) Math.floor(distance);
+//        int serviceId=1;
+//        int priceForOptionalService =estimateDAO.getPricePerOptionalService(serviceId);
 
         // 距離当たりの料金を算出する
+
+        int priceForOptionalService = 0;
+
+        if (dto.getWashingMachineInstallation()) {
+            priceForOptionalService = estimateDAO.getPricePerOptionalService(OptionalServiceType.WASHING_MACHINE.getCode());
+        }
 
 
         return priceForOptionalService;
