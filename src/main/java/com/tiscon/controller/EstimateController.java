@@ -77,9 +77,11 @@ public class EstimateController {
      */
     @PostMapping(value = "submit", params = "confirm")
     String confirm(UserOrderForm userOrderForm, Model model) {
-
+        Integer price =1;
+        model.addAttribute("price", price);
         model.addAttribute("prefectures", estimateDAO.getAllPrefectures());
         model.addAttribute("userOrderForm", userOrderForm);
+
         return "confirm";
     }
 
@@ -108,6 +110,8 @@ public class EstimateController {
     String backToConfirm(UserOrderForm userOrderForm, Model model) {
         model.addAttribute("prefectures", estimateDAO.getAllPrefectures());
         model.addAttribute("userOrderForm", userOrderForm);
+        Integer price =1;
+        model.addAttribute("price", price);
         return "confirm";
     }
 
@@ -121,14 +125,23 @@ public class EstimateController {
      */
     @PostMapping(value = "result", params = "calculation")
     String calculation(@Validated UserOrderForm userOrderForm, BindingResult result, Model model) {
+
+
         if (result.hasErrors()) {
 
             model.addAttribute("prefectures", estimateDAO.getAllPrefectures());
             model.addAttribute("userOrderForm", userOrderForm);
+
+            Integer price = 1;
+//            UserOrderDto dto = new UserOrderDto();
+//            BeanUtils.copyProperties(userOrderForm, dto);
+//            Integer price = estimateService.getPrice(dto);
+            model.addAttribute("price", price);
             return "confirm";
         }
 
         //料金の計算を行う。
+
         UserOrderDto dto = new UserOrderDto();
         BeanUtils.copyProperties(userOrderForm, dto);
         Integer price = estimateService.getPrice(dto);
@@ -139,6 +152,7 @@ public class EstimateController {
 
 
         if(price == 0){
+            model.addAttribute("price", price);
             return "confirm";
         }
 
@@ -165,9 +179,10 @@ public class EstimateController {
     @PostMapping(value = "order", params = "complete")
     String complete(@Validated UserOrderForm userOrderForm, BindingResult result, Model model) {
         if (result.hasErrors()) {
-
             model.addAttribute("prefectures", estimateDAO.getAllPrefectures());
             model.addAttribute("userOrderForm", userOrderForm);
+            Integer price =1;
+            model.addAttribute("price", price);
             return "confirm";
         }
 
