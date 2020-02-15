@@ -195,4 +195,9 @@ ul.label {
 
 td {
     width: 400px;
+    white-space: nowrap;
+}
+
+th {
+    white-space: nowrap;
 }

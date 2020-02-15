@@ -16,14 +16,57 @@
   <form th:action="@{/order}" th:object="${userOrderForm}" class="form-horizontal" method="post">
     <h1>概算お見積り結果</h1>
     <div class="col-sm-12">
+
       <h2><p>概算お見積り結果は<span th:text="${price}"></span>円です。</p></h2>
+      <span th:text="${pricePerTruck}"></span>
+      <h4>個人情報</h4>
+      <table class="table table-bordered">
+        <col span="1" style="background-color: #A9B7C7;">
+        <col span="2" style="background-color: #FFFFFF;">
+        <tbody>
+        <tr>
+          <th style="width: 40%">氏名</th>
+          <td><span th:text="*{customerName}"></span></td>
+          <input type="hidden" name="customerName" id="customerName" th:value="*{customerName}"/>
+        </tr>
+        <tr>
+          <th>連絡先TEL</th>
+          <td><span th:text="*{tel}"></span></td>
+          <input type="hidden" name="tel" id="tel" th:value="*{tel}"/>
+        </tr>
+        <tr>
+          <th>連絡先メールアドレス</th>
+          <td><span th:text="*{email}"></span></td>
+          <input type="hidden" name="email" id="email" th:value="*{email}"/>
+        </tr>
+        <tr>
+          <th>転居元住所（都道府県）</th>
+          <td>
+            <span th:each="prefecture : ${prefectures}" th:text="${prefecture.prefectureName}" th:if="${prefecture.prefectureId}==*{oldPrefectureId}">東京</span>
+          </td>
+          <input type="hidden" name="oldPrefectureId" id="oldPrefectureId" th:value="*{oldPrefectureId}"/>
+        </tr>
+        <tr>
+          <th>転居元住所（市区町村以下）</th>
+          <td><span th:text="*{oldAddress}"></span></td>
+          <input type="hidden" name="oldAddress" id="oldAddress" th:value="*{oldAddress}"/>
+        </tr>
+        <tr>
+          <th>転居先住所（都道府県）</th>
+          <td>
+            <span th:each="prefecture : ${prefectures}" th:text="${prefecture.prefectureName}" th:if="${prefecture.prefectureId}==*{newPrefectureId}">東京</span>
+          </td>
+          <input type="hidden" name="newPrefectureId" id="newPrefectureId" th:value="*{newPrefectureId}"/>
+        </tr>
+        <tr>
+          <th>転居先住所（市区町村以下）</th>
+          <td><span th:text="*{newAddress}"></span></td>
+          <input type="hidden" name="newAddress" id="newAddress" th:value="*{newAddress}"/>
+        </tr>
+        </tbody>
+      </table>
 
-      <div class="cp_actab">
-        <input id="tab-one" type="checkbox" name="tabs">
-        <label for="tab-one">荷物情報をクリックして開く<i class="fas fa-chevron-down pagelink-icon"></i></label>
-        <div class="cp_actab-content">
-
-
+      <h4>荷物情報</h4>
       <table class="table table-bordered">
         <col span="1" style="background-color: #A9B7C7;">
         <col span="2" style="background-color: #FFFFFF;">
@@ -55,14 +98,11 @@
         </tr>
         </tbody>
       </table>
-        </div>
-
       <div class="form-group">
         <div class="text-center">
           <button type="submit" name="backToConfirm" class="btn btn-primary">戻る</button>
           <button type="submit" name="complete" class="btn btn-primary">詳細見積もり依頼</button>
         </div>
-      </div>
       </div>
     </div>
   </form>
@@ -93,65 +133,6 @@
    background: linear-gradient(transparent 80%, #afeeee 80%)
     }
 
-    .cp_actab {
-	position: relative;
-	overflow: hidden;
-	width: 100%;
-	margin: 0 auto;
-}
-.cp_actab input {
-	position: absolute;
-	z-index: -1;
-	opacity: 0;
-}
-.cp_actab label {
-	font-weight: bold;
-	line-height: 3;
-	position: relative;
-	display: block;
-	padding: 0 0 0 1em;
-	cursor: pointer;
-	margin: 0 0 1px 0;
-	background: #b2d8ff;
-}
-.cp_actab .cp_actab-content {
-	overflow: hidden;
-	max-height: 0;
-	-webkit-transition: max-height 0.35s;
-	transition: max-height 0.35s;
-	color: #333333;
-	background: #FFFAFA;
-}
-.cp_actab .cp_actab-content p {
-	margin: 1em;
-}
-/* :checked */
-.cp_actab input:checked ~ .cp_actab-content {
-	max-height: 1000em;
-}
-/* Icon */
-.cp_actab label::after {
-	line-height: 3;
-	position: absolute;
-	top: 0;
-	right: 0;
-	display: block;
-	width: 3em;
-	height: 3em;
-	-webkit-transition: all 0.35s;
-	transition: all 0.35s;
-	text-align: center;
-}
-.cp_actab input[type=checkbox] + label::after {
-	content: '+';
-}
-.cp_actab input[type=checkbox]:checked + label::after {
-	transform: rotate(315deg);
-}
-
-
-.form-group{
-padding-top:50px;}
 
 
 </style>
