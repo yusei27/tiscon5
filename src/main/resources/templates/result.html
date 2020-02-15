@@ -18,8 +18,12 @@
     <div class="col-sm-12">
       <h2><p>概算お見積り結果は<span th:text="${price}"></span>円です。</p></h2>
 
+      <div class="cp_actab">
+        <input id="tab-one" type="checkbox" name="tabs">
+        <label for="tab-one">荷物情報をクリックして開く<i class="fas fa-chevron-down pagelink-icon"></i></label>
+        <div class="cp_actab-content">
 
-      <h4>荷物情報</h4>
+
       <table class="table table-bordered">
         <col span="1" style="background-color: #A9B7C7;">
         <col span="2" style="background-color: #FFFFFF;">
@@ -51,11 +55,14 @@
         </tr>
         </tbody>
       </table>
+        </div>
+
       <div class="form-group">
         <div class="text-center">
           <button type="submit" name="backToConfirm" class="btn btn-primary">戻る</button>
           <button type="submit" name="complete" class="btn btn-primary">詳細見積もり依頼</button>
         </div>
+      </div>
       </div>
     </div>
   </form>
@@ -86,6 +93,65 @@
    background: linear-gradient(transparent 80%, #afeeee 80%)
     }
 
+    .cp_actab {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	margin: 0 auto;
+}
+.cp_actab input {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+}
+.cp_actab label {
+	font-weight: bold;
+	line-height: 3;
+	position: relative;
+	display: block;
+	padding: 0 0 0 1em;
+	cursor: pointer;
+	margin: 0 0 1px 0;
+	background: #b2d8ff;
+}
+.cp_actab .cp_actab-content {
+	overflow: hidden;
+	max-height: 0;
+	-webkit-transition: max-height 0.35s;
+	transition: max-height 0.35s;
+	color: #333333;
+	background: #FFFAFA;
+}
+.cp_actab .cp_actab-content p {
+	margin: 1em;
+}
+/* :checked */
+.cp_actab input:checked ~ .cp_actab-content {
+	max-height: 1000em;
+}
+/* Icon */
+.cp_actab label::after {
+	line-height: 3;
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: block;
+	width: 3em;
+	height: 3em;
+	-webkit-transition: all 0.35s;
+	transition: all 0.35s;
+	text-align: center;
+}
+.cp_actab input[type=checkbox] + label::after {
+	content: '+';
+}
+.cp_actab input[type=checkbox]:checked + label::after {
+	transform: rotate(315deg);
+}
+
+
+.form-group{
+padding-top:50px;}
 
 
 </style>
