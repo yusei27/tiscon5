@@ -18,7 +18,9 @@
     <div class="col-sm-12">
 
       <h2><p>概算お見積り結果は<span th:text="${price}"></span>円です。</p></h2>
-      <span th:text="${pricePerTruck}"></span>
+      <p class="uchiwake">輸送費＋トラック＋オプション料金＝<span th:text="${priceForDistance}" ></span>+<span th:text="${pricePerTruck}"></span>+<span th:text="${priceForOptionalService}"></span></p>
+
+      <div class="kozin">
       <h4>個人情報</h4>
       <table class="table table-bordered">
         <col span="1" style="background-color: #A9B7C7;">
@@ -65,14 +67,19 @@
         </tr>
         </tbody>
       </table>
+      </div>
 
-      <h4>荷物情報</h4>
+      <div class="cp_actab">
+        <input id="tab-one" type="checkbox" name="tabs">
+        <label for="tab-one">荷物情報をクリックして開く<i class="fas fa-chevron-down pagelink-icon"></i></label>
+        <div class="cp_actab-content">
+
       <table class="table table-bordered">
         <col span="1" style="background-color: #A9B7C7;">
         <col span="2" style="background-color: #FFFFFF;">
         <tbody>
         <tr>
-          <th style="width: 40%">段ボールの個数</th>
+          <th style="width: 40%">段ボールの個数 </th>
           <td><span th:text="*{box}"></span></td>
           <input type="hidden" name="box" id="box" th:value="*{box}"/>
         </tr>
@@ -103,12 +110,15 @@
         </tr>
         </tbody>
       </table>
+        </div>
+
       <div class="form-group">
         <div class="text-center">
-          <button type="submit" name="backToConfirm" class="btn btn-primary">戻る</button>
-          <button type="submit" name="complete" class="btn btn-primary">詳細見積もり依頼</button>
+          <button type="submit" name="backToConfirm" class="btn btn-square">戻る</button>
+          <button type="submit" name="complete" class="btn btn-square">詳細見積もり依頼</button>
         </div>
       </div>
+    </div>
     </div>
   </form>
 </div>
@@ -128,7 +138,6 @@
   h2{
   font-weight:bold;
   text-align:center;
-  height:200px;
   padding:100px 0 0 0;
 
   }
@@ -137,6 +146,79 @@
    color:red;
    background: linear-gradient(transparent 80%, #afeeee 80%)
     }
+
+  .kozin{
+  display:none;}
+
+  .form-group{
+padding-top:50px;}
+
+ .cp_actab {
+    margin-top:50px;
+	position: relative;
+	overflow: hidden;
+	width: 70%;
+	margin: 0 auto;
+
+}
+.cp_actab input {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+}
+.cp_actab label {
+	font-weight: bold;
+	line-height: 3;
+	position: relative;
+	display: block;
+	padding: 0 0 0 1em;
+	cursor: pointer;
+	margin: 0 0 1px 0;
+	background: #b2d8ff;
+}
+.cp_actab .cp_actab-content {
+	overflow: hidden;
+	max-height: 0;
+	-webkit-transition: max-height 0.35s;
+	transition: max-height 0.35s;
+	color: #333333;
+	background: #FFFAFA;
+}
+.cp_actab .cp_actab-content p {
+	margin: 1em;
+}
+/* :checked */
+.cp_actab input:checked ~ .cp_actab-content {
+	max-height: 1000em;
+}
+/* Icon */
+.cp_actab label::after {
+	line-height: 3;
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: block;
+	width: 3em;
+	height: 3em;
+	-webkit-transition: all 0.35s;
+	transition: all 0.35s;
+	text-align: center;
+}
+.cp_actab input[type=checkbox] + label::after {
+	content: '+';
+}
+.cp_actab input[type=checkbox]:checked + label::after {
+	transform: rotate(315deg);
+}
+
+.uchiwake{
+text-align:center;
+font-weight:bold;
+margin-bottom:30px;
+color:#6495ed;
+}
+
+
 
 
 

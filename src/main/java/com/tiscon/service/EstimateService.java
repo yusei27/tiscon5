@@ -111,29 +111,37 @@ public class EstimateService {
         int distanceInt = (int) Math.floor(distance);
 
         // 距離当たりの料金を算出する
-        int priceForDistance = distanceInt * PRICE_PER_DISTANCE;
+        int priceForDistance = distanceInt*PRICE_PER_DISTANCE;
 
         return priceForDistance;
     }
+    int serviceId=1;
+
 
     public Integer getpricePerTruck(UserOrderDto dto) {
         double distance = estimateDAO.getDistance(dto.getOldPrefectureId(), dto.getNewPrefectureId());
         // 小数点以下を切り捨てる
         int distanceInt = (int) Math.floor(distance);
+        int serviceId=1;
+        int boxNum=1;
+        int pricePerTruck = estimateDAO.getPricePerTruck(boxNum);
+        int priceForOptionalService =estimateDAO.getPricePerOptionalService(serviceId);
 
         // 距離当たりの料金を算出する
-        int pricePerTruck = distanceInt * PRICE_PER_DISTANCE;
+
 
         return pricePerTruck;
     }
 
     public Integer getForOptionalService(UserOrderDto dto) {
         double distance = estimateDAO.getDistance(dto.getOldPrefectureId(), dto.getNewPrefectureId());
-        // 小数点以下を切り捨てる
+         //小数点以下を切り捨てる
         int distanceInt = (int) Math.floor(distance);
+        int serviceId=1;
+        int priceForOptionalService =estimateDAO.getPricePerOptionalService(serviceId);
 
         // 距離当たりの料金を算出する
-        int priceForOptionalService = distanceInt * PRICE_PER_DISTANCE;
+
 
         return priceForOptionalService;
     }

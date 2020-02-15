@@ -15,10 +15,32 @@ body {
     margin-bottom: 0px;
     min-height: 300px;
 }
-
 .btn-primary {
     background: #afbdfb;
     border-color: #FF0000;
+    background: #FBC0AF;
+    border-color: #FBC0AF;
+  　padding: 0.5em 1em;
+    margin:15px;
+}
+
+.btn-square {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #668ad8;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+  margin:15px;
+  font-size;30px;
+}
+
+.btn-square:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
 }
 
 .btn-top {
@@ -53,7 +75,7 @@ div.center.column {
 }
 
 .register {
-    color: #54b1bf;
+    color: #0066CC;
     font-size: 16px;
     font-weight: bold;
     text-decoration: underline;
@@ -200,4 +222,10 @@ td {
 
 th {
     white-space: nowrap;
+}
+
+h1{
+margin-top:50px;
+color:#66969:
+font-size:13px;
 }
