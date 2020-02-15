@@ -17,10 +17,15 @@
     <h1>概算お見積り結果</h1>
     <div class="col-sm-12">
 
-
-
       <h2><p><img src="../img/hana.png" width="50px"/>概算お見積り結果は<span th:text="${price}"></span>円です<img src="../img/hana.png" width="50px"/></p></h2>
-      <p class="uchiwake">輸送費＋トラック＋オプション料金＝<span th:text="${priceForDistance}" ></span>+<span th:text="${pricePerTruck}"></span>+<span th:text="${priceForOptionalService}"></span></p>
+      <p class="uchiwake">
+        <span>輸送費＋トラック＋オプション料金＝</span>
+        <span th:text="${priceForDistance}"></span>
+        <span>+</span>
+        <span th:text="${pricePerTruck}"></span>
+        <span>+</span>
+        <span th:text="${priceForOptionalService}"></span>
+      </p>
 
       <div class="kozin">
       <h4>個人情報</h4>
@@ -105,7 +110,6 @@
           <td><span th:text="*{washingMachineInstallation} ? 'あり' : 'なし'"></span></td>
           <input type="hidden" name="washingMachineInstallation" id="washingMachineInstallation" th:value="*{washingMachineInstallation}"/>
         </tr>
-
         </tbody>
       </table>
         </div>
