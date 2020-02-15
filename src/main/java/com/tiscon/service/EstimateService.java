@@ -88,6 +88,7 @@ public class EstimateService {
         }
 
         int pricePerTruck = estimateDAO.getPricePerTruck(boxes);
+
         // オプションサービスの料金を算出する。
         int priceForOptionalService = 0;
 
