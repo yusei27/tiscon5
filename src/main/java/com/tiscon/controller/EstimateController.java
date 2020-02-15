@@ -147,6 +147,7 @@ public class EstimateController {
         model.addAttribute("price", price);
         model.addAttribute("pricePerTruck",pricePerTruck);
         model.addAttribute("priceForDistance",priceForDistance);
+
         model.addAttribute("priceForOptionalService",priceForOptionalService);
 
 
