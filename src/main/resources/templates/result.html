@@ -19,6 +19,8 @@
 
       <h2><p>概算お見積り結果は<span th:text="${price}"></span>円です。</p></h2>
       <span th:text="${pricePerTruck}"></span>
+
+      <div class="kozin">
       <h4>個人情報</h4>
       <table class="table table-bordered">
         <col span="1" style="background-color: #A9B7C7;">
@@ -65,6 +67,7 @@
         </tr>
         </tbody>
       </table>
+      </div>
 
       <h4>荷物情報</h4>
       <table class="table table-bordered">
@@ -100,8 +103,8 @@
       </table>
       <div class="form-group">
         <div class="text-center">
-          <button type="submit" name="backToConfirm" class="btn btn-primary">戻る</button>
-          <button type="submit" name="complete" class="btn btn-primary">詳細見積もり依頼</button>
+          <button type="submit" name="backToConfirm" class="btn btn-square">戻る</button>
+          <button type="submit" name="complete" class="btn btn-square">詳細見積もり依頼</button>
         </div>
       </div>
     </div>
@@ -132,6 +135,12 @@
    color:red;
    background: linear-gradient(transparent 80%, #afeeee 80%)
     }
+
+  .kozin{
+  display:none;}
+
+  .form-group{
+padding-top:50px;}
 
 
 
