@@ -62,7 +62,7 @@
         <div class="form-group">
           <label for="box">段ボールの個数　　<!--　<span>※半角で入力してください</span>-->  </label>
           <!--<input type="text" id="box" name="box" th:field="*{box}" class="form-control" value="10"/>-->
-          <select id="box" name="box" class="form-control" >
+          <select th:field="*{box}" id="box" name="box" class="form-control" >
             th:each="prefecture : ${prefectures}"
             <option th:value="0" th:text="0">0</option>
             <option th:value="1" th:text="1">1</option>
@@ -115,7 +115,7 @@
         <div class="form-group">
           <label for="bed">ベッドの個数　　　 </label>
           <!--<input type="text" id="bed" name="bed" th:field="*{bed}" class="form-control" value="3"/>-->
-          <select id="bed" name="bed" class="form-control">
+          <select th:field="*{bed}" id="bed" name="bed" class="form-control">
             <option th:value="0" th:text="0">0</option>
             <option th:value="1" th:text="1">1</option>
             <option th:value="2" th:text="2">2</option>
@@ -158,7 +158,7 @@
           <label for="washingMachine">洗濯機の個数　</label>
           <!--<input type="text" id="washingMachine" name="washingMachine" th:field="*{washingMachine}" class="form-control"
                  value="1"/>-->
-          <select id="washingMachine" name="washingMachine" class="form-control">
+          <select th:field="*{washingMachine}" id="washingMachine" name="washingMachine" class="form-control">
             <option th:value="0" th:text="0">0</option>
             <option th:value="1" th:text="1">1</option>
             <option th:value="2" th:text="2">2</option>
